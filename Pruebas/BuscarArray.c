@@ -8,7 +8,7 @@ int main(void)
 {
     int i = 0;
     char lines[MAXLINES][BUFSIZ];
-    FILE *fp = fopen("2x1BasicProblem01.txt", "r");
+    FILE *fp = fopen("2x1BasicProblem08.txt", "r");
     char *indexA;
 
     if (fp == 0)
@@ -19,7 +19,9 @@ int main(void)
     while (i < MAXLINES && fgets(lines[i], sizeof(lines[0]), fp))
     {
         lines[i][strlen(lines[i])-1] = '\0';
-        if (strstr(lines[i], "A")){
+        //printf("%s\n", lines[i]); 
+        if (lines[i][0] == '\t' && lines[i][1] == '\t'){
+            printf("%s\n", lines[i]); 
             indexA = lines[i];
         }else{
             i = i + 1;
