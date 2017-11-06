@@ -3,13 +3,13 @@
 #include <string.h>
 #include <time.h>
 
-enum { MAXLINES = 30 };
+enum { MAXLINES = 100 };
 
 int main(void)
 {
     int i = 0;
     char lines[MAXLINES][BUFSIZ];
-    FILE *fp = fopen("prueba.txt", "r");
+    FILE *fp = fopen("2x1BasicProblem01.txt", "r");
 
     if (fp == 0)
     {
@@ -24,6 +24,8 @@ int main(void)
     fclose(fp);
     printf("%d\n", i);
     srand(time(0));
-    printf("%s %s %s %s %s\n", lines[0], lines[1], lines[2], lines[3], lines[4]); 
+    char *indexA;
+    indexA = lines[3];
+    printf("%s\n", indexA); 
     return 0;
 }
