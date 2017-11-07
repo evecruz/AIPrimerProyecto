@@ -1,15 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
 
-enum { MAXLINES = 100 };
+enum { MAXLINES = 200 };
 
 int main(void)
 {
     int i = 0;
     char lines[MAXLINES][BUFSIZ];
-    FILE *fp = fopen("2x1BasicProblem01.txt", "r");
+    FILE *fp = fopen("2x1BasicProblem08.txt", "r");
 
     if (fp == 0)
     {
@@ -25,7 +24,10 @@ int main(void)
     printf("%d\n", i);
     srand(time(0));
     char *indexA;
+    char *indexB;
     indexA = lines[3];
+    indexB = lines[5][2];
     printf("%s\n", indexA); 
+    printf("%s\n", indexB); 
     return 0;
 }

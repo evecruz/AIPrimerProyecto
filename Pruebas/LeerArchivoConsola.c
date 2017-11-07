@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-enum { MAXLINES = 250 };
+enum { MAXLINES = 100 };
 
-int main(void)
+int main(int argc, char* argv[])
 {
     int i = 0;
     char lines[MAXLINES][BUFSIZ];
-    FILE *fp = fopen("2x1BasicProblem08.txt", "r");
+    FILE *fp = fopen(argv[1], "r");
     char *indexA;
 
     if (fp == 0)
@@ -19,14 +19,17 @@ int main(void)
     while (i < MAXLINES && fgets(lines[i], sizeof(lines[0]), fp))
     {
         lines[i][strlen(lines[i])-1] = '\0';
+        printf("%s\n", lines[i]);
+        //printf("%s\n", lines[i][2]);
+        i = i + 1;
         //printf("%s\n", lines[i]); 
-        if (lines[i][0] == '\t' /*&& lines[i][1] == '\t'*/){
+        /*if (lines[i][0] == '\t' && lines[i][1] == '\t'){
             printf("%s\n", lines[i]); 
             indexA = lines[i];
         }else{
             i = i + 1;
         
-        }
+        }*/
         
     }
     fclose(fp);
@@ -36,4 +39,3 @@ int main(void)
     printf("%s\n", indexA); 
     return 0;
 }
-
