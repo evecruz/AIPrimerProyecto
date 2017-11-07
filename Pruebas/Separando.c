@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
                indexC = lines[i];
                 printf("%s\n", indexC);
             }
-            else if (strstr(lines[i], "1")){
+            /*else if (strstr(lines[i], "1")){
                index1 = lines[i];
                 printf("%s\n", index1);
             }
@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
                index6 = lines[i];
                 printf("%s\n", index6);
             }       
-          //  printf("%s\n", lines[i]); 
+          //  printf("%s\n", lines[i]); */
         
         }else{
             i = i + 1;

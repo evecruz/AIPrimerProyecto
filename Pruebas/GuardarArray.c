@@ -26,7 +26,7 @@ int main(void)
     char *indexA;
     char *indexB;
     indexA = lines[3];
-    indexB = lines[5][2];
+    //indexB = lines[5][2];
     printf("%s\n", indexA); 
     printf("%s\n", indexB); 
     return 0;
