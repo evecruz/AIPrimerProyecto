@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h> // For exit() function
+#include <stdlib.h> 
 int main()
 {
     char c[1000];
@@ -8,7 +8,7 @@ int main()
     if ((fptr = fopen("2x1BasicProblem01.txt", "r")) == NULL)
     {
         printf("Error! opening file sdfasdf");
-        // Program exits if file pointer returns NULL.
+       
         exit(1);         
     }
 
