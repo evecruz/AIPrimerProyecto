@@ -1,0 +1,36 @@
+1. Separar cada cuadro
+2. Identificar cuantas figuras tiene cada cuadro
+	AZ, AY, AX, AW, AV...
+3. Comparar propiedades de cada figura dentro de A y B con C
+	AZ == CZ? true 1 false 0
+	AZ == CY?
+	AZ == CX?
+	.
+	.
+	Parecido AZ = suma de cada comparacion
+
+	Parecido de A = ParecidoAZ + ParecidoAY + ParecidoAX....
+
+4. Ponderacion
+	Figuras de 5 en 5
+	Demas propiedades 1 en 1
+
+5. contador que aumenta dependiendo la propiedad
+6. comparar valores de A, B y C con numeros para descartar iguales
+	Darle un valor muy alto
+7. Comparaciones de similutud entre A y B y compararlo con C y numeros
+	Resta de valores A -B y luego C con cada cuadro de respuesta
+	1c, 2c, 3c...
+
+8. Comparar similutues entre A y C, comparar B con cada una de las soluciones
+	A - C 
+	1B, 2B, 3B
+9. Comparar similutud AB con todos las comparaciones de C con las soluciones
+	CompAB = AB - 1C
+	AB - 2C
+
+10. Comparar similud AC con todas las comparaciones de B con las soluciones
+	CompAC = AC - 1B
+	AC - 2B
+11. Valor de cada solucion es la suma de compAB + compAC
+12. Respuesta correcta el valor mas peque;o de todos.
