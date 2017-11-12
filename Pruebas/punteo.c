@@ -25,13 +25,7 @@ int main(int argc, char* argv[])
             if (lines[i][0] == 'A'){
                indexA = 'A';
                printf("%c\n", indexA);
-               if (lines[i][0] == '\t'){
-                    if (lines[i][1] == 'z'){
-                     AZ = 'Z';
-                     printf("%c\n", AZ);
-                    }
-                }
-
+               
             }
             else if (lines[i][0] == 'B'){
                indexB = 'B';
@@ -66,7 +60,13 @@ int main(int argc, char* argv[])
                 printf("%c\n", index6);
             }else if (lines[i][0] == 'x'){
                 printf("%s\n", "esto no");
-            }    
+            }  
+            else if (lines[i][0] == '\t' && lines[i][1] == 'Z'){
+                   // if (lines[i][1] == 'Z'){
+                     AZ = 'Z';
+                     printf("%c\n", AZ);
+            }       
+                   // }  
           //  printf("%s\n", lines[i]);*/
         
         }else{
@@ -87,25 +87,25 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-int pondera(char* propiedad, int value){
+/*int pondera(char* propiedad, int value){
     if(strstr(propiedad,'circle')){
         value=value+2;
     }else if(strstr(propiedad,'square')){
         value=value+7;
     }else if(strstr(propiedad,'triangle')){
-        value=value+15;
+        value=value+12;
     }else if(strstr(propiedad,'plus')){
-        value=value+21;
+        value=value+17;
     }else if(strstr(propiedad,'rectangle')){
-        value=value+27;
+        value=value+22;
     }else if(strstr(propiedad,'arrow')){
-        value=value+33;
+        value=value+27;
     }else if(strstr(propiedad,'half-arrow')){
-        value=value+39;
+        value=value+32;
     }else if(strstr(propiedad,'Pac-Man')){
-        value=value+45;
+        value=value+37;
     }else if(strstr(propiedad,'diamond')){
-        value=value+51;
+        value=value+42;
     }
     
     if((strstr(propiedad,'fill:yes')){
@@ -230,4 +230,5 @@ int pondera(char* propiedad, int value){
 
    return value;
 
-}
+}*/
+
