@@ -13,9 +13,12 @@ int main(int argc, char* argv[])
     char lines[MAXLINES][BUFSIZ];
     FILE *fp = fopen(argv[1], "r");
     char indexA,indexB,indexC,index1,index2,index3,index4,index5,index6;
-    char AZ,AY,AX;
+    int Z,Y,X;
+    int BZ,BY,BX;
+    int CZ,CY,CX;
     char *caracteristicas;
     int punteos [8];
+    int figPunteos[29];
 
     if (fp == 0)
     {
@@ -31,78 +34,63 @@ int main(int argc, char* argv[])
                indexA = 'A';
                printf("%c\n", indexA);
                //punteos[0] = valor;
-               valor = 0;
+               //valor = 0;
                
             }
             else if (lines[i][0] == 'B'){
                indexB = 'B';
-               punteos[0] = valor;
-               valor = 0;
+              // punteos[0] = valor;
+               //valor = 0;
                 printf("%c\n", indexB);
             }
             else if (lines[i][0] == 'C'){
                indexC = 'C';
-               punteos[1] = valor;
-               valor = 0;
+               //punteos[1] = valor;
+               //valor = 0;
                 printf("%c\n", indexC);
             }
             else if (lines[i][0] == '1'){
                index1 = '1';
-               punteos[2] = valor;
-               valor = 0;
+               //punteos[2] = valor;
+               //valor = 0;
                 printf("%c\n", index1);
             }
             else if (lines[i][0] == '2'){
                index2 = '2';
-               punteos[3] = valor;
-               valor = 0;
+               //punteos[3] = valor;
+               //valor = 0;
                 printf("%c\n", index2);
             }
             else if (lines[i][0] == '3'){
                index3 = '3';
-               punteos[4] = valor;
-               valor = 0;
+               //punteos[4] = valor;
+               //valor = 0;
                 printf("%c\n", index3);
             }
             else if (lines[i][0] == '4'){
                index4 = '4';
-               punteos[5] = valor;
-               valor = 0;
+               //punteos[5] = valor;
+               //valor = 0;
                 printf("%c\n", index4);
             }
             else if (lines[i][0] == '5'){
                index5 = '5';
-               punteos[6] = valor;
-               valor = 0;
+               //punteos[6] = valor;
+               //valor = 0;
                 printf("%c\n", index5);
             }
             else if (lines[i][0] == '6'){
                index6 = '6';
-               punteos[7] = valor;
-               valor = 0;
+              // punteos[7] = valor;
+              // valor = 0;
                 printf("%c\n", index6);
             }else if (lines[i][0] == 'x'){
                 printf("%s\n", "esto no");
             }  
             else if (feof(fp)) { 
-              punteos[8] = valor;
-        
-            }
-            else if (lines[i][0] == '\t' && lines[i][1] == 'Z' || lines[i][1] == 'X' || lines[i][1] == 'Y'){
-                 if (lines[i][1] == 'Z'){
-                     
-                    AZ = 'Z';
-                    printf("%c\n", AZ);
-                }else if (lines[i][1] == 'Y'){
-                    AY = 'Y';
-                    printf("%c\n", AY);
-                }else if (lines[i][1] == 'X'){
-                    AX = 'X';
-                    printf("%c\n", AX);
-                }  
+             // punteos[8] = valor;
 
-            }  
-            else if (lines[i][0] == '\t' && lines[i][1] == '\t'){
+            }else if (lines[i][0] == '\t' && lines[i][1] == '\t'){
 
 //tratando de guardar la linea y mandarla a la funcion
              //sscanf(lines[i], "%s",caracteristicas);
@@ -112,13 +100,54 @@ int main(int argc, char* argv[])
 */
 
 // haciendolo todo junto para probar...
-
-                  if ((strstr(lines[i],"shape")) || (strstr(lines[i],"fill"))|| (strstr(lines[i],"shape"))|| (strstr(lines[i],"size"))|| (strstr(lines[i],"above"))|| (strstr(lines[i],"inside"))){
-                    valor = pondera(lines[i],valor);
-                    
+                   //while(lines[i][0] == '\t'){
+                   if((lines[i][1] != 'Z') && (lines[i][1] != 'Y') && (lines[i][1] != 'X')){
+                      if ((strstr(lines[i],"shape")) || (strstr(lines[i],"fill"))|| (strstr(lines[i],"shape"))|| (strstr(lines[i],"size"))|| (strstr(lines[i],"above"))|| (strstr(lines[i],"inside"))){
+                      valor = pondera(lines[i],valor);
+                        
+                       
+                       //printf("h %i\n",h);                  
+                       
+                    }
                   }
+                     // }
+
+                  
+                    
+                  
                  
-            }
+            
+        
+            }else if ((lines[i][1] == 'Z')  || (lines[i][1] == 'Y') || (lines[i][1] == 'X')){
+              
+                      figPunteos[h] = valor;
+                      printf("Fig %i\n",figPunteos[h]);    
+                      valor = 0;
+                      h = h + 1;
+                     //printf("h %i\n\n", h);
+                     //printf("i %i\n\n", i);
+                      }
+            /*else if (lines[i][0] == '\t' && lines[i][1] == 'Z' || lines[i][1] == 'X' || lines[i][1] == 'Y'){
+                 
+                 if (lines[i][1] == 'Z'){
+                    Z = valor;
+                    printf("%c\n", AZ);
+                }else if (lines[i][1] == 'Y'){
+                    AY = valor;
+                    printf("%c\n", AY);
+                }else if (lines[i][1] == 'X'){
+                    AX = valor;
+                    printf("%c\n", AX);
+                }  
+
+            }  */
+                
+           if(lines[i][1] == 'X'){
+                  l =2;
+              }
+              if(lines[i][1] == 'Y'){
+                  l =1;
+              }
 
              
         
@@ -133,8 +162,8 @@ int main(int argc, char* argv[])
         
     }
     //printf("la respuesta es: %i\n", compara(punteos,valor));
-    valor = compara(punteos,valor);
-    printf("ValorA %i\n", punteos[0]); 
+   // valor = compara(figPunteos,valor);
+   /* printf("ValorA %i\n", punteos[0]); 
     printf("ValorB %i\n", punteos[1]); 
     printf("ValorC %i\n", punteos[2]); 
     printf("Valor1 %i\n", punteos[3]); 
@@ -143,8 +172,47 @@ int main(int argc, char* argv[])
     printf("Valor4 %i\n", punteos[6]); 
     printf("Valor5 %i\n", punteos[7]); 
     printf("Valor6 %i\n", punteos[8]); 
-    //valor = compara(punteos,valor);
+    //valor = compara(punteos,valor);*/
+
+    
+    if (l = 2){
+
+
+    punteos[0] = figPunteos[0]+figPunteos[1]+figPunteos[2];
+    punteos[1] = figPunteos[3]+figPunteos[4]+figPunteos[5];
+    punteos[2] = figPunteos[6]+figPunteos[7]+figPunteos[8];
+    punteos[3] = figPunteos[9]+figPunteos[10]+figPunteos[11];
+    punteos[4] = figPunteos[12]+figPunteos[13]+figPunteos[14];
+    punteos[5] = figPunteos[15]+figPunteos[16]+figPunteos[17];
+    punteos[6] = figPunteos[18]+figPunteos[19]+figPunteos[20];
+    punteos[7] = figPunteos[21]+figPunteos[22]+figPunteos[23];
+    punteos[8] = figPunteos[24]+figPunteos[25]+figPunteos[26];
     printf("Mi prediccion es: %i\n", compara(punteos,valor));
+  }else if(l=0){
+    punteos[0] = figPunteos[0];
+    punteos[1] = figPunteos[1];
+    punteos[2] = figPunteos[2];
+    punteos[3] = figPunteos[3];
+    punteos[4] = figPunteos[4];
+    punteos[5] = figPunteos[5];
+    punteos[6] = figPunteos[6];
+    punteos[7] = figPunteos[7];
+    punteos[8] = figPunteos[8];
+    printf("Mi prediccion es: %i\n", compara(punteos,valor));
+  }
+
+
+   /*printf("Valor0 %i\n", figPunteos[0]); 
+    printf("Valor1 %i\n", figPunteos[1]); 
+    printf("Valor2 %i\n", figPunteos[2]); 
+    printf("Valor3 %i\n", figPunteos[3]); 
+    printf("Valor4 %i\n", figPunteos[4]); 
+    printf("Valor5 %i\n", figPunteos[5]); 
+    printf("Valor6 %i\n", figPunteos[6]); 
+    printf("Valor7 %i\n", figPunteos[7]); 
+    printf("Valor8 %i\n", figPunteos[8]); 
+    printf("Valor9 %i\n", figPunteos[9]); */
+    
 
     fclose(fp);
     //printf("%d\n", i);
@@ -193,7 +261,7 @@ int pondera(char* propiedad, int value){
         value=value+59;
     }
      
-   else if(strstr(propiedad,"square")){
+   else if(strstr(propiedad,"small")){
         value=value+60;
     }else if(strstr(propiedad,"medium")){
         value=value+61;
@@ -239,7 +307,7 @@ int pondera(char* propiedad, int value){
         value=value+78;     
    }
    
-   else if(strstr(propiedad,"inside:z")){
+   else if(strstr(propiedad,"inside:Z")){
         value=value+79;
    }else if(strstr(propiedad,"inside:y")){
         value=value+80;
@@ -302,6 +370,7 @@ int pondera(char* propiedad, int value){
 
 int compara(int* array, int value){
 
+
   if (array[0]==array[3]){
     array[3] = 1000;
   }else if (array[0]==array[4]){
@@ -345,17 +414,17 @@ int compara(int* array, int value){
   }
 
   int AB = array[0] - array [1];
-  printf("esto es AB: %i\n",AB );
+  //printf("esto es AB: %i\n",AB );
   int C1 = array[2] - array [3];
   int C2 = array[2] - array [4];
   int C3 = array[2] - array [5];
   int C4 = array[2] - array [6];
   int C5 = array[2] - array [7];
-  printf("esto es 5C: %i\n",C5 );
+  //printf("esto es 5C: %i\n",C5 );
   int C6 = array[2] - array [8];
 
   int AC = array[0] - array [2];
-  printf("esto es AC: %i\n", AC);
+  //printf("esto es AC: %i\n", AC);
   int B1 = array[1] - array [3];
   int B2 = array[1] - array [4];
   int B3 = array[1] - array [5];
@@ -368,7 +437,7 @@ int compara(int* array, int value){
   C3 = abs(AB - C3);
   C4 = abs(AB - C4);
   C5 = abs(AB - C5);
-   printf("esto es 5C: %i\n",C5 );
+ //  printf("esto es 5C: %i\n",C5 );
   C6 = abs(AB - C6);
 
   B1 = abs(AC - B1);
@@ -381,17 +450,17 @@ int compara(int* array, int value){
   int total = 0;
 
   int total1 = C1 + B1;
-   printf("esto total1: %i\n",total1 );
+  printf("esto total1: %i\n",total1 );
   int total2 = C2 + B2;
-   printf("esto es total2: %i\n",total2 );
+  printf("esto es total2: %i\n",total2 );
   int total3 = C3 + B3;
-   printf("esto es total3: %i\n",total3 );
+  printf("esto es total3: %i\n",total3 );
   int total4 = C4 + B4;
-   printf("esto es total4: %i\n",total4 );
+  printf("esto es total4: %i\n",total4 );
   int total5 = C5 + B5;
-   printf("esto es total5: %i\n",total5 );
+  printf("esto es total5: %i\n",total5 );
   int total6 = C6 + B6;
-   printf("esto es total6: %i\n",total6 );
+  printf("esto es total6: %i\n",total6 );
 
   if((total1 < total2) && (total1 < total3) && (total1 < total4) && (total1 < total5) && (total1 < total6)){
     value = 1;
@@ -408,4 +477,3 @@ int compara(int* array, int value){
   }
   return value;
 }
-
