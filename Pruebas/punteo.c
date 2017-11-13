@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
     char lines[MAXLINES][BUFSIZ];
     FILE *fp = fopen(argv[1], "r");
     char indexA,indexB,indexC,index1,index2,index3,index4,index5,index6;
-    char AZ;
+    char AZ,AY,AX;
 
     if (fp == 0)
     {
@@ -61,12 +61,19 @@ int main(int argc, char* argv[])
             }else if (lines[i][0] == 'x'){
                 printf("%s\n", "esto no");
             }  
-            else if (lines[i][0] == '\t' && lines[i][1] == 'Z'){
-                   // if (lines[i][1] == 'Z'){
-                     AZ = 'Z';
-                     printf("%c\n", AZ);
-            }       
-                   // }  
+            else if (lines[i][0] == '\t' && lines[i][1] == 'Z' || lines[i][1] == 'X' || lines[i][1] == 'Y'){
+                 if (lines[i][1] == 'Z'){
+                     
+                    AZ = 'Z';
+                    printf("%c\n", AZ);
+                }else if (lines[i][1] == 'Y'){
+                    AY = 'Y';
+                    printf("%c\n", AY);
+                }else if (lines[i][1] == 'X'){
+                    AX = 'X';
+                    printf("%c\n", AX);
+                }  
+            }  
           //  printf("%s\n", lines[i]);*/
         
         }else{
