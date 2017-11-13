@@ -20,6 +20,16 @@ int main(int argc, char* argv[])
     int punteos [8];
     int figPunteos[29];
 
+    punteos[0] = 0;
+    punteos[1] = 0;
+    punteos[2] = 0;
+    punteos[3] = 0;
+    punteos[4] = 0;
+    punteos[5] = 0;
+    punteos[6] = 0;
+    punteos[7] = 0;
+    punteos[8] = 0;
+
     if (fp == 0)
     {
         fprintf(stderr, "No se pudo abrir el archivo\n");
@@ -92,6 +102,15 @@ int main(int argc, char* argv[])
 
             }else if (lines[i][0] == '\t' && lines[i][1] == '\t'){
 
+              if(lines[i][1] == 'X'){
+                  l =2;
+              }
+          else if(lines[i][1] == 'Y'){
+                  l =1;
+          }else if(lines[i][1] == 'Z'){
+                  l =0;
+          }
+
 //tratando de guardar la linea y mandarla a la funcion
              //sscanf(lines[i], "%s",caracteristicas);
 
@@ -101,12 +120,12 @@ int main(int argc, char* argv[])
 
 // haciendolo todo junto para probar...
                    //while(lines[i][0] == '\t'){
-                   if((lines[i][1] != 'Z') && (lines[i][1] != 'Y') && (lines[i][1] != 'X')){
+                   if((lines[i][1] != 'Z') && (lines[i][1] != 'Y') && (lines[i][1] != 'X')&& (h!= 0)){
                       if ((strstr(lines[i],"shape")) || (strstr(lines[i],"fill"))|| (strstr(lines[i],"shape"))|| (strstr(lines[i],"size"))|| (strstr(lines[i],"above"))|| (strstr(lines[i],"inside"))){
                       valor = pondera(lines[i],valor);
-                        
+                        printf("Osoo \n");
                        
-                       //printf("h %i\n",h);                  
+                         //printf("Indice: %d Contiene: %c\n", i, lines[i][2]);                 
                        
                     }
                   }
@@ -118,10 +137,10 @@ int main(int argc, char* argv[])
                  
             
         
-            }else if ((lines[i][1] == 'Z')  || (lines[i][1] == 'Y') || (lines[i][1] == 'X')){
-              
+            }else if ((lines[i][1] == 'Z')  || (lines[i][1] == 'Y') || (lines[i][1] == 'X') || (lines[i][0] != '\0')){
+                      printf("gato \n");
                       figPunteos[h] = valor;
-                      printf("Fig %i\n",figPunteos[h]);    
+                      printf("Posicion: %d Contiene: %i\n\n",h, figPunteos[h]);    
                       valor = 0;
                       h = h + 1;
                      //printf("h %i\n\n", h);
@@ -142,12 +161,6 @@ int main(int argc, char* argv[])
 
             }  */
                 
-           if(lines[i][1] == 'X'){
-                  l =2;
-              }
-              if(lines[i][1] == 'Y'){
-                  l =1;
-              }
 
              
         
@@ -175,43 +188,44 @@ int main(int argc, char* argv[])
     //valor = compara(punteos,valor);*/
 
     
-    if (l = 2){
+   if (l == 2){
 
 
-    punteos[0] = figPunteos[0]+figPunteos[1]+figPunteos[2];
-    punteos[1] = figPunteos[3]+figPunteos[4]+figPunteos[5];
-    punteos[2] = figPunteos[6]+figPunteos[7]+figPunteos[8];
-    punteos[3] = figPunteos[9]+figPunteos[10]+figPunteos[11];
-    punteos[4] = figPunteos[12]+figPunteos[13]+figPunteos[14];
-    punteos[5] = figPunteos[15]+figPunteos[16]+figPunteos[17];
-    punteos[6] = figPunteos[18]+figPunteos[19]+figPunteos[20];
-    punteos[7] = figPunteos[21]+figPunteos[22]+figPunteos[23];
-    punteos[8] = figPunteos[24]+figPunteos[25]+figPunteos[26];
+    punteos[0] = figPunteos[1]+figPunteos[2]+figPunteos[3];
+    punteos[1] = figPunteos[4]+figPunteos[5]+figPunteos[6];
+    punteos[2] = figPunteos[7]+figPunteos[8]+figPunteos[9];
+    punteos[3] = figPunteos[10]+figPunteos[11]+figPunteos[12];
+    punteos[4] = figPunteos[13]+figPunteos[14]+figPunteos[15];
+    punteos[5] = figPunteos[16]+figPunteos[17]+figPunteos[18];
+    punteos[6] = figPunteos[19]+figPunteos[20]+figPunteos[21];
+    punteos[7] = figPunteos[22]+figPunteos[23]+figPunteos[24];
+    punteos[8] = figPunteos[25]+figPunteos[26]+figPunteos[27];
     printf("Mi prediccion es: %i\n", compara(punteos,valor));
-  }else if(l=0){
-    punteos[0] = figPunteos[0];
-    punteos[1] = figPunteos[1];
-    punteos[2] = figPunteos[2];
-    punteos[3] = figPunteos[3];
-    punteos[4] = figPunteos[4];
-    punteos[5] = figPunteos[5];
-    punteos[6] = figPunteos[6];
-    punteos[7] = figPunteos[7];
-    punteos[8] = figPunteos[8];
-    printf("Mi prediccion es: %i\n", compara(punteos,valor));
+  }else if(l==0){
+    punteos[0] = figPunteos[1];
+    punteos[1] = figPunteos[2];
+    punteos[2] = figPunteos[3];
+    punteos[3] = figPunteos[4];
+    punteos[4] = figPunteos[5];
+    punteos[5] = figPunteos[6];
+    punteos[6] = figPunteos[7];
+    punteos[7] = figPunteos[8];
+    punteos[8] = figPunteos[9];
+    
+    printf("Mi prediccion es: %i\n\n", compara(punteos,valor));
   }
 
-
-   /*printf("Valor0 %i\n", figPunteos[0]); 
-    printf("Valor1 %i\n", figPunteos[1]); 
-    printf("Valor2 %i\n", figPunteos[2]); 
-    printf("Valor3 %i\n", figPunteos[3]); 
-    printf("Valor4 %i\n", figPunteos[4]); 
-    printf("Valor5 %i\n", figPunteos[5]); 
-    printf("Valor6 %i\n", figPunteos[6]); 
-    printf("Valor7 %i\n", figPunteos[7]); 
-    printf("Valor8 %i\n", figPunteos[8]); 
-    printf("Valor9 %i\n", figPunteos[9]); */
+printf("l; %i\n\n\n", l);
+   printf("Valor0 %i\n", punteos[0]); 
+    printf("Valor1 %i\n", punteos[1]); 
+    printf("Valor2 %i\n", punteos[2]); 
+    printf("Valor3 %i\n", punteos[3]); 
+    printf("Valor4 %i\n", punteos[4]); 
+    printf("Valor5 %i\n", punteos[5]); 
+    printf("Valor6 %i\n", punteos[6]); 
+    printf("Valor7 %i\n", punteos[7]); 
+    printf("Valor8 %i\n", punteos[8]); 
+    printf("Valor9 %i\n", punteos[9]); 
     
 
     fclose(fp);
