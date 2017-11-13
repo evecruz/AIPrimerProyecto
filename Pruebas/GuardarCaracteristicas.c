@@ -7,6 +7,8 @@ enum { MAXLINES = 200 };
 int main(int argc, char* argv[])
 {
     int i = 2;
+    int h=0;
+    int valor =0;
     char lines[MAXLINES][BUFSIZ];
     FILE *fp = fopen(argv[1], "r");
     char indexA,indexB,indexC,index1,index2,index3,index4,index5,index6;
@@ -76,24 +78,45 @@ int main(int argc, char* argv[])
 
             }  
             else if (lines[i][0] == '\t' && lines[i][1] == '\t'){
-                   // printf("si\n"); 
-                   // caracteristicas[0] = lines[i][2];
-                  
-                  
-            //}
-                    if (strstr(lines[i],"circle")){
+
+//tratando de guardar la linea y mandarla a la funcion
+            /* sscanf( lines[i], "%s",caracteristicas);
+
+                  valor = pondera(caracteristicas,valor);
+                   printf("Valor:  %i\n", valor);
+*/
+
+// haciendolo todo junto para probar...
+                   if (strstr(lines[i],"circle")){
                     caracteristicas = strstr(lines[i],"circle");
-                    //strncpy (caracteristicas,"circle",6);
+                  
+                    //pondera(caracteristicas,valor);
                    printf("%s\n", caracteristicas); 
+                   int n = strcmp(caracteristicas,"circle");
+                   valor = pondera(caracteristicas,valor);
+                    printf("Valor:  %i\n", valor);
+                    //printf("comp:  %i\n", n);
                     }else if (strstr(lines[i],"square")){
                     caracteristicas = strstr(lines[i],"square");
-                    //strncpy (caracteristicas,"circle",6);
+                    
                    printf("%s\n", caracteristicas); 
                     }else if (strstr(lines[i],"triangle")){
                     caracteristicas = strstr(lines[i],"triangle");
-                    //strncpy (caracteristicas,"circle",6);
+                   
                    printf("%s\n", caracteristicas); 
                     }
+                   else if (strstr(lines[i],"yes")){
+                        caracteristicas = strstr(lines[i],"yes");
+                        valor = pondera(caracteristicas,valor);
+                        printf("Valor:  %i\n", valor); 
+                    }else if (strstr(lines[i],"no")){
+                          caracteristicas = strstr(lines[i],"no");
+                          valor = pondera(caracteristicas,valor);
+                          printf("Valor:  %i\n", valor);
+                      }
+                    
+
+                  
             }
           //  printf("%s\n", lines[i]);*/
         
@@ -116,11 +139,17 @@ int main(int argc, char* argv[])
 }
 
 int pondera(char* propiedad, int value){
-    //char comp[] = "circle";
-    if(strcmp(propiedad, "circle")== 0 ){
-        value=value+2;
 
-    }/*else if(strstr(propiedad,'square')){
+    if(strstr(propiedad,"circle")){
+        value=value+2;
+    }else if(strstr(propiedad,"yes")){
+        value=value+52;
+    }else if(strstr(propiedad,"no")){
+        value=value+53;
+    }
+
+
+    /*else if(strstr(propiedad,'square')){
         value=value+7;
     }else if(strstr(propiedad,'triangle')){
         value=value+12;
@@ -257,8 +286,8 @@ int pondera(char* propiedad, int value){
    }else if(strstr(propiedad,',top-left')){
         value=value+101;
    }
-
-   return value;*/
+*/
+   return value;
 
 }
 
