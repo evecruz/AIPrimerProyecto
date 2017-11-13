@@ -115,7 +115,7 @@ int main(int argc, char* argv[])
 
                   if ((strstr(lines[i],"shape")) || (strstr(lines[i],"fill"))|| (strstr(lines[i],"shape"))|| (strstr(lines[i],"size"))|| (strstr(lines[i],"above"))|| (strstr(lines[i],"inside"))){
                     valor = pondera(lines[i],valor);
-                    valor = compara(punteos,valor);
+                    
                   }
                  
             }
@@ -132,6 +132,8 @@ int main(int argc, char* argv[])
 
         
     }
+    printf("la respuesta es: %i\n", compara(punteos,valor));
+    valor = compara(punteos,valor);
     printf("ValorA %i\n", punteos[0]); 
     printf("ValorB %i\n", punteos[1]); 
     printf("ValorC %i\n", punteos[2]); 
@@ -141,6 +143,8 @@ int main(int argc, char* argv[])
     printf("Valor4 %i\n", punteos[6]); 
     printf("Valor5 %i\n", punteos[7]); 
     printf("Valor6 %i\n", punteos[8]); 
+    //valor = compara(punteos,valor);
+    printf("la respuesta es: %i\n", compara(punteos,valor));
 
     fclose(fp);
     //printf("%d\n", i);
@@ -339,5 +343,69 @@ int compara(int* array, int value){
   }else if (array[2]==array[8]){
     array[8] = 1000;
   }
+
+  int AB = array[0] - array [1];
+  printf("esto es AB: %i\n",AB );
+  int C1 = array[2] - array [3];
+  int C2 = array[2] - array [4];
+  int C3 = array[2] - array [5];
+  int C4 = array[2] - array [6];
+  int C5 = array[2] - array [7];
+  printf("esto es 5C: %i\n",C5 );
+  int C6 = array[2] - array [8];
+
+  int AC = array[0] - array [2];
+  printf("esto es AC: %i\n", AC);
+  int B1 = array[1] - array [3];
+  int B2 = array[1] - array [4];
+  int B3 = array[1] - array [5];
+  int B4 = array[1] - array [6];
+  int B5 = array[1] - array [7];
+  int B6 = array[1] - array [8];
+
+  C1 = abs(AB - C1);
+  C2 = abs(AB - C2);
+  C3 = abs(AB - C3);
+  C4 = abs(AB - C4);
+  C5 = abs(AB - C5);
+   printf("esto es 5C: %i\n",C5 );
+  C6 = abs(AB - C6);
+
+  B1 = abs(AC - B1);
+  B2 = abs(AC - B2);
+  B3 = abs(AC - B3);
+  B4 = abs(AC - B4);
+  B5 = abs(AC - B5);
+  B2 = abs(AC - B6);
+
+  int total = 0;
+
+  int total1 = C1 + B1;
+   printf("esto total1: %i\n",total1 );
+  int total2 = C2 + B2;
+   printf("esto es total2: %i\n",total2 );
+  int total3 = C3 + B3;
+   printf("esto es total3: %i\n",total3 );
+  int total4 = C4 + B4;
+   printf("esto es total4: %i\n",total4 );
+  int total5 = C5 + B5;
+   printf("esto es total5: %i\n",total5 );
+  int total6 = C6 + B6;
+   printf("esto es total6: %i\n",total6 );
+
+  if((total1 < total2) && (total1 < total3) && (total1 < total4) && (total1 < total5) && (total1 < total6)){
+    value = 1;
+  }else if((total2 < total1) && (total2 < total3) && (total2 < total4) && (total2 < total5) && (total2 < total6)){
+    value = 2;
+  }else if((total3 < total1) && (total3 < total2) && (total3 < total4) && (total3 < total5) && (total3 < total6)){
+    value = 3;
+  }else if((total4 < total1) && (total4 < total2) && (total4 < total3) && (total4 < total5) && (total4 < total6)){
+    value = 4;
+  }else if((total5 < total1) && (total5 < total2) && (total5 < total3) && (total5 < total4) && (total5 < total6)){
+    value = 5;
+  }else if((total6 < total1) && (total6 < total2) && (total6 < total3) && (total6 < total4) && (total6 < total5)){
+    value = 1;
+  }
   return value;
 }
+
