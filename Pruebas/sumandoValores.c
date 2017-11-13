@@ -8,12 +8,13 @@ int main(int argc, char* argv[])
 {
     int i = 2;
     int h=0;
+    int l=0;
     int valor =0;
     char lines[MAXLINES][BUFSIZ];
     FILE *fp = fopen(argv[1], "r");
     char indexA,indexB,indexC,index1,index2,index3,index4,index5,index6;
     char AZ,AY,AX;
-    char * caracteristicas;
+    char *caracteristicas;
     int punteos [8];
 
     if (fp == 0)
@@ -104,40 +105,18 @@ int main(int argc, char* argv[])
             else if (lines[i][0] == '\t' && lines[i][1] == '\t'){
 
 //tratando de guardar la linea y mandarla a la funcion
-            /* sscanf( lines[i], "%s",caracteristicas);
+             //sscanf(lines[i], "%s",caracteristicas);
 
-                  valor = pondera(caracteristicas,valor);
+                /*  valor = pondera(caracteristicas,valor);
                    printf("Valor:  %i\n", valor);
 */
 
 // haciendolo todo junto para probar...
 
-                   if (strstr(lines[i],"circle")){
-                      caracteristicas = strstr(lines[i],"circle");
-                      printf("%s\n", caracteristicas); 
-                      
-                   }else if (strstr(lines[i],"square")){
-                      caracteristicas = strstr(lines[i],"square");
-                      printf("%s\n", caracteristicas); 
-                    }else if (strstr(lines[i],"triangle")){
-                      caracteristicas = strstr(lines[i],"triangle");
-                      printf("%s\n", caracteristicas); 
-                    }else if (strstr(lines[i],"yes")){
-                      caracteristicas = strstr(lines[i],"yes");
-                      //valor = pondera(caracteristicas,valor);
-                      //printf("Valor:  %i\n", valor); 
-                    }else if (strstr(lines[i],"no")){
-                      caracteristicas = strstr(lines[i],"no");
-                      //valor = pondera(caracteristicas,valor);
-                      //printf("Valor:  %i\n", valor);
-                    }
-
-                    valor = pondera(caracteristicas,valor);
-                      //printf("Valor:  %i\n", valor);
-
-                   
-
-                  
+                  if ((strstr(lines[i],"shape")) || (strstr(lines[i],"fill"))|| (strstr(lines[i],"shape"))|| (strstr(lines[i],"size"))|| (strstr(lines[i],"above"))|| (strstr(lines[i],"inside"))){
+                    valor = pondera(lines[i],valor);
+                  }
+                 
             }
 
              
@@ -175,13 +154,141 @@ int pondera(char* propiedad, int value){
     if(strstr(propiedad,"circle")){
         value=value+2;
        // printf("entro\n");
-    }else if(strstr(propiedad,"yes")){
+    }else if(strstr(propiedad,"square")){
+        value=value+7;
+    }else if(strstr(propiedad,"triangle")){
+        value=value+12;
+    }else if(strstr(propiedad,"plus")){
+        value=value+17;
+    }else if(strstr(propiedad,"rectangle")){
+        value=value+22;
+    }else if(strstr(propiedad,"arrow")){
+        value=value+27;
+    }else if(strstr(propiedad,"half-arrow")){
+        value=value+32;
+    }else if(strstr(propiedad,"Pac-Man")){
+        value=value+37;
+    }else if(strstr(propiedad,"diamond")){
+        value=value+42;
+    }else if(strstr(propiedad,"fill:yes")){
         value=value+52;
-        // printf("aqui\n");
-    }else if(strstr(propiedad,"no")){
+    }else if(strstr(propiedad,"fill:no")){
         value=value+53;
-        // printf("tambien\n");
+    }else if(strstr(propiedad,"fill:left-half")){
+        value=value+54;
+    }else if(strstr(propiedad,"fill:right-half")){
+        value=value+55;
+    }else if(strstr(propiedad,"fill:bottom-half")){
+        value=value+56;
+    }else if(strstr(propiedad,"fill:top-half")){
+        value=value+57;
+    }else if(strstr(propiedad,"fill:top-left")){
+        value=value+58;
+    }else if(strstr(propiedad,"fill:top-right")){
+        value=value+59;
     }
+     
+   else if(strstr(propiedad,"square")){
+        value=value+60;
+    }else if(strstr(propiedad,"medium")){
+        value=value+61;
+   }else if(strstr(propiedad,"large")){
+        value=value+62;
+   }
+   
+   else if(strstr(propiedad,"angle:0")){
+        value=value+63;
+    }else if(strstr(propiedad,"angle:70")){
+        value=value+64;
+   }else if(strstr(propiedad,"angle:90")){
+        value=value+65;
+   }else if(strstr(propiedad,"angle:780")){
+        value=value+66;
+   }else if(strstr(propiedad,"angle:770")){
+        value=value+67;
+   }else if(strstr(propiedad,"angle:-70")){
+        value=value+68;
+   }
+   
+  else if(strstr(propiedad,"above:z")){
+        value=value+69;
+    }else if(strstr(propiedad,"above:y")){
+        value=value+70;
+   }else if(strstr(propiedad,"above:x")){
+        value=value+71;
+   }else if(strstr(propiedad,"above:w")){
+        value=value+72;
+   }else if(strstr(propiedad,"above:v")){
+        value=value+73;     
+   }
+   
+   else if(strstr(propiedad,"left-of:z")){
+        value=value+74;
+   }else if(strstr(propiedad,"left-of:y")){
+        value=value+75;
+   }else if(strstr(propiedad,"left-of:x")){
+        value=value+76;
+   }else if(strstr(propiedad,"left-of:w")){
+        value=value+77;
+   }else if(strstr(propiedad,"left-of:v")){
+        value=value+78;     
+   }
+   
+   else if(strstr(propiedad,"inside:z")){
+        value=value+79;
+   }else if(strstr(propiedad,"inside:y")){
+        value=value+80;
+   }else if(strstr(propiedad,"inside:x")){
+        value=value+81;
+   }else if(strstr(propiedad,"inside:w")){
+        value=value+82;
+   }else if(strstr(propiedad,"inside:v")){
+        value=value+83;     
+   }
+   
+   else if(strstr(propiedad,"overlaps:z")){
+        value=value+84;
+   }else if(strstr(propiedad,"overlaps:y")){
+        value=value+85;
+   }else if(strstr(propiedad,"overlaps:x")){
+        value=value+86;
+   }else if(strstr(propiedad,"overlaps:w")){
+        value=value+87;
+   }else if(strstr(propiedad,"overlaps:v")){
+        value=value+88;     
+   }
+   
+   else if(strstr(propiedad,",z")){
+        value=value+89;
+   }else if(strstr(propiedad,",y")){
+        value=value+90;
+   }else if(strstr(propiedad,",x")){
+        value=value+91;
+   }else if(strstr(propiedad,",w")){
+        value=value+92;
+   }else if(strstr(propiedad,",v")){
+        value=value+93;
+   }
+   
+   else if(strstr(propiedad,"vertical-flip:no")){
+        value=value+94;
+   }else if(strstr(propiedad,"vertical-flip:yes")){
+        value=value+95;
+   }
+   
+   else if(strstr(propiedad,"fill:bottom-left")){
+        value=value+96; 
+   }else if(strstr(propiedad,"fill:bottom-right")){
+        value=value+97; 
+   }else if(strstr(propiedad,",bottom-left")){
+        value=value+98;
+   }else if(strstr(propiedad,",bottom-right")){
+        value=value+99;
+   }else if(strstr(propiedad,",top-right")){
+        value=value+100;
+   }else if(strstr(propiedad,",top-left")){
+        value=value+101;
+   }
 
 
    return value;
