@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
         if (lines[i][1] != 'x' && i != 4){
             if (lines[i][0] == 'A'){
                indexA = 'A';
-               printf("%c\n", indexA);
+              // printf("%c\n", indexA);
                //punteos[0] = valor;
                //valor = 0;
                
@@ -51,49 +51,49 @@ int main(int argc, char* argv[])
                indexB = 'B';
               // punteos[0] = valor;
                //valor = 0;
-                printf("%c\n", indexB);
+                //printf("%c\n", indexB);
             }
             else if (lines[i][0] == 'C'){
                indexC = 'C';
                //punteos[1] = valor;
                //valor = 0;
-                printf("%c\n", indexC);
+                //printf("%c\n", indexC);
             }
             else if (lines[i][0] == '1'){
                index1 = '1';
                //punteos[2] = valor;
                //valor = 0;
-                printf("%c\n", index1);
+                //printf("%c\n", index1);
             }
             else if (lines[i][0] == '2'){
                index2 = '2';
                //punteos[3] = valor;
                //valor = 0;
-                printf("%c\n", index2);
+               // printf("%c\n", index2);
             }
             else if (lines[i][0] == '3'){
                index3 = '3';
                //punteos[4] = valor;
                //valor = 0;
-                printf("%c\n", index3);
+                //printf("%c\n", index3);
             }
             else if (lines[i][0] == '4'){
                index4 = '4';
                //punteos[5] = valor;
                //valor = 0;
-                printf("%c\n", index4);
+               // printf("%c\n", index4);
             }
             else if (lines[i][0] == '5'){
                index5 = '5';
                //punteos[6] = valor;
                //valor = 0;
-                printf("%c\n", index5);
+                //printf("%c\n", index5);
             }
             else if (lines[i][0] == '6'){
                index6 = '6';
               // punteos[7] = valor;
               // valor = 0;
-                printf("%c\n", index6);
+               // printf("%c\n", index6);
             }else if (lines[i][0] == 'x'){
                 printf("%s\n", "esto no");
             }  
@@ -123,7 +123,7 @@ int main(int argc, char* argv[])
                    if((lines[i][1] != 'Z') && (lines[i][1] != 'Y') && (lines[i][1] != 'X')&& (h!= 0)){
                       if ((strstr(lines[i],"shape")) || (strstr(lines[i],"fill"))|| (strstr(lines[i],"shape"))|| (strstr(lines[i],"size"))|| (strstr(lines[i],"above"))|| (strstr(lines[i],"inside"))){
                       valor = pondera(lines[i],valor);
-                        printf("Osoo \n");
+                        //printf("Osoo \n");
                        
                          //printf("Indice: %d Contiene: %c\n", i, lines[i][2]);                 
                        
@@ -138,9 +138,9 @@ int main(int argc, char* argv[])
             
         
             }else if ((lines[i][1] == 'Z')  || (lines[i][1] == 'Y') || (lines[i][1] == 'X') || (lines[i][0] != '\0')){
-                      printf("gato \n");
+                     // printf("gato \n");
                       figPunteos[h] = valor;
-                      printf("Posicion: %d Contiene: %i\n\n",h, figPunteos[h]);    
+                      //printf("Posicion: %d Contiene: %i\n\n",h, figPunteos[h]);    
                       valor = 0;
                       h = h + 1;
                      //printf("h %i\n\n", h);
@@ -190,7 +190,6 @@ int main(int argc, char* argv[])
     
    if (l == 2){
 
-
     punteos[0] = figPunteos[1]+figPunteos[2]+figPunteos[3];
     punteos[1] = figPunteos[4]+figPunteos[5]+figPunteos[6];
     punteos[2] = figPunteos[7]+figPunteos[8]+figPunteos[9];
@@ -200,6 +199,18 @@ int main(int argc, char* argv[])
     punteos[6] = figPunteos[19]+figPunteos[20]+figPunteos[21];
     punteos[7] = figPunteos[22]+figPunteos[23]+figPunteos[24];
     punteos[8] = figPunteos[25]+figPunteos[26]+figPunteos[27];
+    printf("Mi prediccion es: %i\n", compara(punteos,valor));
+  }else if (l == 1){
+
+    punteos[0] = figPunteos[1]+figPunteos[2];
+    punteos[1] = figPunteos[3]+figPunteos[4];
+    punteos[2] = figPunteos[5]+figPunteos[6];
+    punteos[3] = figPunteos[7]+figPunteos[8];
+    punteos[4] = figPunteos[9]+figPunteos[10];
+    punteos[5] = figPunteos[11]+figPunteos[12];
+    punteos[6] = figPunteos[13]+figPunteos[14];
+    punteos[7] = figPunteos[15]+figPunteos[16];
+    punteos[8] = figPunteos[17]+figPunteos[18];
     printf("Mi prediccion es: %i\n", compara(punteos,valor));
   }else if(l==0){
     punteos[0] = figPunteos[1];
@@ -215,7 +226,7 @@ int main(int argc, char* argv[])
     printf("Mi prediccion es: %i\n\n", compara(punteos,valor));
   }
 
-printf("l; %i\n\n\n", l);
+/*printf("l; %i\n\n\n", l);
    printf("Valor0 %i\n", punteos[0]); 
     printf("Valor1 %i\n", punteos[1]); 
     printf("Valor2 %i\n", punteos[2]); 
@@ -227,7 +238,7 @@ printf("l; %i\n\n\n", l);
     printf("Valor8 %i\n", punteos[8]); 
     printf("Valor9 %i\n", punteos[9]); 
     
-
+*/
     fclose(fp);
     //printf("%d\n", i);
     //char *indexA;
@@ -249,15 +260,15 @@ int pondera(char* propiedad, int value){
         value=value+17;
     }else if(strstr(propiedad,"rectangle")){
         value=value+22;
-    }else if(strstr(propiedad,"arrow")){
+    }else if(strstr(propiedad,"arroW")){
         value=value+27;
-    }else if(strstr(propiedad,"half-arrow")){
+    }else if(strstr(propiedad,"half-arroW")){
         value=value+32;
     }else if(strstr(propiedad,"Pac-Man")){
         value=value+37;
     }else if(strstr(propiedad,"diamond")){
         value=value+42;
-    }else if(strstr(propiedad,"fill:yes")){
+    }else if(strstr(propiedad,"fill:Yes")){
         value=value+52;
     }else if(strstr(propiedad,"fill:no")){
         value=value+53;
@@ -297,69 +308,69 @@ int pondera(char* propiedad, int value){
         value=value+68;
    }
    
-  else if(strstr(propiedad,"above:z")){
+  else if(strstr(propiedad,"above:Z")){
         value=value+69;
-    }else if(strstr(propiedad,"above:y")){
+    }else if(strstr(propiedad,"above:Y")){
         value=value+70;
-   }else if(strstr(propiedad,"above:x")){
+   }else if(strstr(propiedad,"above:X")){
         value=value+71;
-   }else if(strstr(propiedad,"above:w")){
+   }else if(strstr(propiedad,"above:W")){
         value=value+72;
-   }else if(strstr(propiedad,"above:v")){
+   }else if(strstr(propiedad,"above:V")){
         value=value+73;     
    }
    
-   else if(strstr(propiedad,"left-of:z")){
+   else if(strstr(propiedad,"left-of:Z")){
         value=value+74;
-   }else if(strstr(propiedad,"left-of:y")){
+   }else if(strstr(propiedad,"left-of:Y")){
         value=value+75;
-   }else if(strstr(propiedad,"left-of:x")){
+   }else if(strstr(propiedad,"left-of:X")){
         value=value+76;
-   }else if(strstr(propiedad,"left-of:w")){
+   }else if(strstr(propiedad,"left-of:W")){
         value=value+77;
-   }else if(strstr(propiedad,"left-of:v")){
+   }else if(strstr(propiedad,"left-of:V")){
         value=value+78;     
    }
    
    else if(strstr(propiedad,"inside:Z")){
         value=value+79;
-   }else if(strstr(propiedad,"inside:y")){
+   }else if(strstr(propiedad,"inside:Y")){
         value=value+80;
-   }else if(strstr(propiedad,"inside:x")){
+   }else if(strstr(propiedad,"inside:X")){
         value=value+81;
-   }else if(strstr(propiedad,"inside:w")){
+   }else if(strstr(propiedad,"inside:W")){
         value=value+82;
-   }else if(strstr(propiedad,"inside:v")){
+   }else if(strstr(propiedad,"inside:V")){
         value=value+83;     
    }
    
-   else if(strstr(propiedad,"overlaps:z")){
+   else if(strstr(propiedad,"overlaps:Z")){
         value=value+84;
-   }else if(strstr(propiedad,"overlaps:y")){
+   }else if(strstr(propiedad,"overlaps:Y")){
         value=value+85;
-   }else if(strstr(propiedad,"overlaps:x")){
+   }else if(strstr(propiedad,"overlaps:X")){
         value=value+86;
-   }else if(strstr(propiedad,"overlaps:w")){
+   }else if(strstr(propiedad,"overlaps:W")){
         value=value+87;
-   }else if(strstr(propiedad,"overlaps:v")){
+   }else if(strstr(propiedad,"overlaps:V")){
         value=value+88;     
    }
    
-   else if(strstr(propiedad,",z")){
+   else if(strstr(propiedad,",Z")){
         value=value+89;
-   }else if(strstr(propiedad,",y")){
+   }else if(strstr(propiedad,",Y")){
         value=value+90;
-   }else if(strstr(propiedad,",x")){
+   }else if(strstr(propiedad,",X")){
         value=value+91;
-   }else if(strstr(propiedad,",w")){
+   }else if(strstr(propiedad,",W")){
         value=value+92;
-   }else if(strstr(propiedad,",v")){
+   }else if(strstr(propiedad,",V")){
         value=value+93;
    }
    
    else if(strstr(propiedad,"vertical-flip:no")){
         value=value+94;
-   }else if(strstr(propiedad,"vertical-flip:yes")){
+   }else if(strstr(propiedad,"vertical-flip:Yes")){
         value=value+95;
    }
    
@@ -464,17 +475,17 @@ int compara(int* array, int value){
   int total = 0;
 
   int total1 = C1 + B1;
-  printf("esto total1: %i\n",total1 );
+  //printf("esto total1: %i\n",total1 );
   int total2 = C2 + B2;
-  printf("esto es total2: %i\n",total2 );
+  //printf("esto es total2: %i\n",total2 );
   int total3 = C3 + B3;
-  printf("esto es total3: %i\n",total3 );
+  //printf("esto es total3: %i\n",total3 );
   int total4 = C4 + B4;
-  printf("esto es total4: %i\n",total4 );
+  //printf("esto es total4: %i\n",total4 );
   int total5 = C5 + B5;
-  printf("esto es total5: %i\n",total5 );
+  //printf("esto es total5: %i\n",total5 );
   int total6 = C6 + B6;
-  printf("esto es total6: %i\n",total6 );
+  //printf("esto es total6: %i\n",total6 );
 
   if((total1 < total2) && (total1 < total3) && (total1 < total4) && (total1 < total5) && (total1 < total6)){
     value = 1;

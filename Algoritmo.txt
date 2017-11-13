@@ -16,8 +16,10 @@
 	Demas propiedades 1 en 1
 
 5. contador que aumenta dependiendo la propiedad
-6. comparar valores de A, B y C con numeros para descartar iguales
+
+6.	comparar valores de A, B y C con numeros para descartar iguales
 	Darle un valor muy alto
+
 7. Comparaciones de similutud entre A y B y compararlo con C y numeros
 	Resta de valores A -B y luego C con cada cuadro de respuesta
 	1c, 2c, 3c...
