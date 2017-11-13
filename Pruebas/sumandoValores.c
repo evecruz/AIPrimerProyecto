@@ -83,6 +83,10 @@ int main(int argc, char* argv[])
             }else if (lines[i][0] == 'x'){
                 printf("%s\n", "esto no");
             }  
+            else if (feof(fp)) { 
+              punteos[8] = valor;
+        
+            }
             else if (lines[i][0] == '\t' && lines[i][1] == 'Z' || lines[i][1] == 'X' || lines[i][1] == 'Y'){
                  if (lines[i][1] == 'Z'){
                      
@@ -156,7 +160,7 @@ int main(int argc, char* argv[])
     printf("Valor3 %i\n", punteos[5]); 
     printf("Valor4 %i\n", punteos[6]); 
     printf("Valor5 %i\n", punteos[7]); 
-    //printf("Valor6 %i\n", punteos[8]); 
+    printf("Valor6 %i\n", punteos[8]); 
 
     fclose(fp);
     //printf("%d\n", i);
