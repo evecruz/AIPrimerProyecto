@@ -11,6 +11,7 @@ int main(int argc, char* argv[])
     FILE *fp = fopen(argv[1], "r");
     char indexA,indexB,indexC,index1,index2,index3,index4,index5,index6;
     char AZ,AY,AX;
+    char * caracteristicas;
 
     if (fp == 0)
     {
@@ -25,7 +26,6 @@ int main(int argc, char* argv[])
             if (lines[i][0] == 'A'){
                indexA = 'A';
                printf("%c\n", indexA);
-               
             }
             else if (lines[i][0] == 'B'){
                indexB = 'B';
@@ -73,7 +73,17 @@ int main(int argc, char* argv[])
                     AX = 'X';
                     printf("%c\n", AX);
                 }  
+
             }  
+            else if (lines[i][0] == '\t' && lines[i][1] == '\t'){
+                    if (strstr(lines[i],"circle")){
+                    caracteristicas = strstr(lines[i],"circle");
+                    //strncpy (caracteristicas,"sample",6);
+                   printf("%s\n", caracteristicas); 
+                    }else {
+                        printf("no hay\n");
+                    }
+            }
           //  printf("%s\n", lines[i]);*/
         
         }else{
@@ -94,10 +104,12 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-/*int pondera(char* propiedad, int value){
-    if(strstr(propiedad,'circle')){
+int pondera(char* propiedad, int value){
+    //char comp[] = "circle";
+    if(strcmp(propiedad, "circle")== 0 ){
         value=value+2;
-    }else if(strstr(propiedad,'square')){
+
+    }/*else if(strstr(propiedad,'square')){
         value=value+7;
     }else if(strstr(propiedad,'triangle')){
         value=value+12;
@@ -113,8 +125,8 @@ int main(int argc, char* argv[])
         value=value+37;
     }else if(strstr(propiedad,'diamond')){
         value=value+42;
-    }
-    
+    }*/
+   /* 
     if((strstr(propiedad,'fill:yes')){
         value=value+52;
     }else if(strstr(propiedad,'fill:no')){
@@ -235,7 +247,7 @@ int main(int argc, char* argv[])
         value=value+101;
    }
 
-   return value;
+   return value;*/
 
-}*/
+}
 
