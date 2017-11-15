@@ -19,6 +19,7 @@ int main(int argc, char* argv[])
     char *caracteristicas;
     int punteos [8];
     int figPunteos[29];
+    int cont=0;
 
     punteos[0] = 0;
     punteos[1] = 0;
@@ -38,7 +39,7 @@ int main(int argc, char* argv[])
     while (i < MAXLINES && fgets(lines[i], sizeof(lines[0]), fp))
     {
         lines[i][strlen(lines[i])] = '\0';
-        //printf("Indice: %d Contiene: %c\n", i, lines[i][0]);
+        printf("Indice: %d Contiene: %c\n", i, lines[i][0]);
         if (lines[i][1] != 'x' && i != 4){
             if (lines[i][0] == 'A'){
                indexA = 'A';
@@ -102,14 +103,7 @@ int main(int argc, char* argv[])
 
             }else if (lines[i][0] == '\t' && lines[i][1] == '\t'){
 
-              if(lines[i][1] == 'X'){
-                  l =2;
-              }
-          else if(lines[i][1] == 'Y'){
-                  l =1;
-          }else if(lines[i][1] == 'Z'){
-                  l =0;
-          }
+              
 
 //tratando de guardar la linea y mandarla a la funcion
              //sscanf(lines[i], "%s",caracteristicas);
@@ -120,14 +114,14 @@ int main(int argc, char* argv[])
 
 // haciendolo todo junto para probar...
                    //while(lines[i][0] == '\t'){
-                   if((lines[i][1] != 'Z') && (lines[i][1] != 'Y') && (lines[i][1] != 'X')&& (h!= 0)){
-                      if ((strstr(lines[i],"shape")) || (strstr(lines[i],"fill"))|| (strstr(lines[i],"shape"))|| (strstr(lines[i],"size"))|| (strstr(lines[i],"above"))|| (strstr(lines[i],"inside"))){
+                   if((lines[i][1] != 'Z') && (lines[i][1] != 'Y') && (lines[i][1] != 'X')){
+                      ///if ((strstr(lines[i],"shape")) || (strstr(lines[i],"fill"))|| (strstr(lines[i],"shape"))|| (strstr(lines[i],"size"))|| (strstr(lines[i],"above"))|| (strstr(lines[i],"inside"))){
                       valor = pondera(lines[i],valor);
                         //printf("Osoo \n");
                        
                          //printf("Indice: %d Contiene: %c\n", i, lines[i][2]);                 
                        
-                    }
+                   // }
                   }
                      // }
 
@@ -138,11 +132,24 @@ int main(int argc, char* argv[])
             
         
             }else if ((lines[i][1] == 'Z')  || (lines[i][1] == 'Y') || (lines[i][1] == 'X') || (lines[i][0] != '\0')){
+              
+                    if(lines[i][1] == 'X'){
+                  l =2;
+              }
+          else if(lines[i][1] == 'Y'){
+                  l =1;
+          }else if(lines[i][1] == 'Z'){
+                  l =0;
+          }
+
+          if (cont>0){
                      // printf("gato \n");
                       figPunteos[h] = valor;
                       //printf("Posicion: %d Contiene: %i\n\n",h, figPunteos[h]);    
                       valor = 0;
                       h = h + 1;
+          }
+          cont++;
                      //printf("h %i\n\n", h);
                      //printf("i %i\n\n", i);
                       }
@@ -174,18 +181,18 @@ int main(int argc, char* argv[])
 
         
     }
-    //printf("la respuesta es: %i\n", compara(punteos,valor));
+   // printf("l: %i\n", l);
    // valor = compara(figPunteos,valor);
-   /* printf("ValorA %i\n", punteos[0]); 
-    printf("ValorB %i\n", punteos[1]); 
-    printf("ValorC %i\n", punteos[2]); 
-    printf("Valor1 %i\n", punteos[3]); 
-    printf("Valor2 %i\n", punteos[4]); 
-    printf("Valor3 %i\n", punteos[5]); 
-    printf("Valor4 %i\n", punteos[6]); 
-    printf("Valor5 %i\n", punteos[7]); 
-    printf("Valor6 %i\n", punteos[8]); 
-    //valor = compara(punteos,valor);*/
+   printf("ValorA %i\n", figPunteos[0]); 
+    printf("ValorB %i\n", figPunteos[1]); 
+    printf("ValorC %i\n", figPunteos[2]); 
+    printf("Valor1 %i\n", figPunteos[3]); 
+    printf("Valor2 %i\n", figPunteos[4]); 
+    printf("Valor3 %i\n", figPunteos[5]); 
+    printf("Valor4 %i\n", figPunteos[6]); 
+    printf("Valor5 %i\n", figPunteos[7]); 
+    printf("Valor6 %i\n", figPunteos[8]); 
+    //valor = compara(punteos,valor);
 
     
    if (l == 2){
@@ -268,7 +275,7 @@ int pondera(char* propiedad, int value){
         value=value+37;
     }else if(strstr(propiedad,"diamond")){
         value=value+42;
-    }else if(strstr(propiedad,"fill:Yes")){
+    }else if(strstr(propiedad,"fill:yes")){
         value=value+52;
     }else if(strstr(propiedad,"fill:no")){
         value=value+53;
@@ -370,7 +377,7 @@ int pondera(char* propiedad, int value){
    
    else if(strstr(propiedad,"vertical-flip:no")){
         value=value+94;
-   }else if(strstr(propiedad,"vertical-flip:Yes")){
+   }else if(strstr(propiedad,"vertical-flip:yes")){
         value=value+95;
    }
    

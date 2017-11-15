@@ -76,8 +76,8 @@
 
        }else if (lines[i][0] == 'x'){
         printf("%s\n", "esto no");
-      }  
-      else if (feof(fp)) { 
+       
+      
 
 
       }else if (lines[i][0] == '\t' && lines[i][1] == '\t'){ //Doble tab propiedades
@@ -111,7 +111,8 @@
 
     }
 
-  }
+  
+
 //dependiendo la cantidad de figuras ese sera el valor a comparar
   if (l == 2){ 
 
@@ -154,7 +155,7 @@
       fclose(fp);
       return 0;
     }
-
+  }
 
     int pondera(char* propiedad, int value){ //verifica propiedades y les da valores
 
@@ -411,3 +412,4 @@
       }
       return value;
     }
+
