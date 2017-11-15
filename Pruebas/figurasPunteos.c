@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
     while (i < MAXLINES && fgets(lines[i], sizeof(lines[0]), fp))
     {
         lines[i][strlen(lines[i])] = '\0';
-        printf("Indice: %d Contiene: %c\n", i, lines[i][0]);
+       // printf("Indice: %d Contiene: %c\n", i, lines[i][0]);
         if (lines[i][1] != 'x' && i != 4){
             if (lines[i][0] == 'A'){
                indexA = 'A';
@@ -181,6 +181,8 @@ int main(int argc, char* argv[])
 
         
     }
+     valor = pondera(lines[i],valor);
+     figPunteos[h] = valor;
    // printf("l: %i\n", l);
    // valor = compara(figPunteos,valor);
    printf("ValorA %i\n", figPunteos[0]); 
@@ -220,15 +222,15 @@ int main(int argc, char* argv[])
     punteos[8] = figPunteos[17]+figPunteos[18];
     printf("Mi prediccion es: %i\n", compara(punteos,valor));
   }else if(l==0){
-    punteos[0] = figPunteos[1];
-    punteos[1] = figPunteos[2];
-    punteos[2] = figPunteos[3];
-    punteos[3] = figPunteos[4];
-    punteos[4] = figPunteos[5];
-    punteos[5] = figPunteos[6];
-    punteos[6] = figPunteos[7];
-    punteos[7] = figPunteos[8];
-    punteos[8] = figPunteos[9];
+    punteos[0] = figPunteos[0];
+    punteos[1] = figPunteos[1];
+    punteos[2] = figPunteos[2];
+    punteos[3] = figPunteos[3];
+    punteos[4] = figPunteos[4];
+    punteos[5] = figPunteos[5];
+    punteos[6] = figPunteos[6];
+    punteos[7] = figPunteos[7];
+    punteos[8] = figPunteos[8];
     
     printf("Mi prediccion es: %i\n\n", compara(punteos,valor));
   }
@@ -446,17 +448,17 @@ int compara(int* array, int value){
   }
 
   int AB = array[0] - array [1];
-  //printf("esto es AB: %i\n",AB );
+  printf("esto es AB: %i\n",AB );
   int C1 = array[2] - array [3];
   int C2 = array[2] - array [4];
   int C3 = array[2] - array [5];
   int C4 = array[2] - array [6];
   int C5 = array[2] - array [7];
-  //printf("esto es 5C: %i\n",C5 );
+  printf("esto es 5C: %i\n",C5 );
   int C6 = array[2] - array [8];
 
-  int AC = array[0] - array [2];
-  //printf("esto es AC: %i\n", AC);
+  int AC = abs(array[0] - array [2]);
+  printf("esto es AC: %i\n", AC);
   int B1 = array[1] - array [3];
   int B2 = array[1] - array [4];
   int B3 = array[1] - array [5];
@@ -469,30 +471,32 @@ int compara(int* array, int value){
   C3 = abs(AB - C3);
   C4 = abs(AB - C4);
   C5 = abs(AB - C5);
- //  printf("esto es 5C: %i\n",C5 );
+  printf("esto es 5C: %i\n",C5 );
   C6 = abs(AB - C6);
+  printf("esto es C6: %i\n",C6 );
 
   B1 = abs(AC - B1);
   B2 = abs(AC - B2);
   B3 = abs(AC - B3);
   B4 = abs(AC - B4);
   B5 = abs(AC - B5);
-  B2 = abs(AC - B6);
+  B6 = abs(AC - B6);
+  printf("esto es B6: %i\n",B6 );
 
   int total = 0;
 
   int total1 = C1 + B1;
-  //printf("esto total1: %i\n",total1 );
+ printf("esto total1: %i\n",total1 );
   int total2 = C2 + B2;
-  //printf("esto es total2: %i\n",total2 );
+ printf("esto es total2: %i\n",total2 );
   int total3 = C3 + B3;
-  //printf("esto es total3: %i\n",total3 );
+ printf("esto es total3: %i\n",total3 );
   int total4 = C4 + B4;
-  //printf("esto es total4: %i\n",total4 );
+ printf("esto es total4: %i\n",total4 );
   int total5 = C5 + B5;
-  //printf("esto es total5: %i\n",total5 );
+ printf("esto es total5: %i\n",total5 );
   int total6 = C6 + B6;
-  //printf("esto es total6: %i\n",total6 );
+ printf("esto es total6: %i\n",total6 );
 
   if((total1 < total2) && (total1 < total3) && (total1 < total4) && (total1 < total5) && (total1 < total6)){
     value = 1;
@@ -505,7 +509,9 @@ int compara(int* array, int value){
   }else if((total5 < total1) && (total5 < total2) && (total5 < total3) && (total5 < total4) && (total5 < total6)){
     value = 5;
   }else if((total6 < total1) && (total6 < total2) && (total6 < total3) && (total6 < total4) && (total6 < total5)){
-    value = 1;
+    value = 6;
+  }else{
+    value = 0;
   }
   return value;
 }
